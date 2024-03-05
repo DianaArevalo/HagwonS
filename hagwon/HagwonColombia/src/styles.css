@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Fontdiner+Swanky&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;1,100;1,200;1,300;1,400;1,500&family=Mooli&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    body {
+        @apply font-secondary text-lg leading-8 bg-wallpaper text-primary
+    }
+
+}
+
+@layer utilities {
+
+
+    .navbar {
+        @apply h-20 max-w-screen-xl mx-auto py-4 px-6
+    }
+
+    .menu-item {
+        @apply text-sm font-bold text-primary hover:text-accent relative cursor-pointer after:content-[''] after:w-full after:h-[5px] after:absolute after:left-0
+    }
+}
