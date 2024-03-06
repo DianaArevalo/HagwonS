@@ -11,10 +11,6 @@ export const Register = () => {
         lastName: '',
         userName: '',
         userAge: '',
-        userCity: '',
-        otherCity: '',
-        chooseCourse: '',
-        userChoose: '',
         password: '',
         equalPassword: '',
     }
@@ -28,7 +24,7 @@ export const Register = () => {
 
 
         if (!formState.userNames.trim()) {
-            // haber si funciona https://youtu.be/SVBC6PfNups?si=A5K4lyP2AbH2exf1 min:13:10
+
             errors.userNames = 'El campo "Nombres" es obligatorio '
             isError = true
         } else if (!regexName.test(formState.userNames)) {
@@ -56,18 +52,11 @@ export const Register = () => {
             errors.userAge = 'El campo "Edad" es obligatorio'
             isError = true
         }
-        if (!formState.userCity.trim()) {
-            errors.userCity = 'El campo "Ciudad" es obligatorio'
-            isError = true
-        }
-        if (!formState.chooseCourse.trim()) {
-            errors.chooseCourse = "Por favor elige un curso de interes"
-            isError = true
-        }
 
         if (!formState.password.trim()) {
             errors.password = "Introduce una contraseña"
             isError = true
+
         } else if (!regexPassword.test(formState.password)) {
             errors.password = 'la contraseña debe tener al menos: 8 caracteres, una letra mayuscula, una letra minuscula, un digito, sin espacios y caracteres especiales '
             isError = true
@@ -93,7 +82,7 @@ export const Register = () => {
 
     return (
         <main className='container mx-auto mt-5 md:mt-20 p-5 md:flex md:justify-center '>
-            <div className='md:w-2/3 lg:w-2/5'>
+            <div className='md:w-1/2 lg:w-3/5'>
                 <form
                     onSubmit={handleSubmit}
                     action=""
@@ -201,171 +190,6 @@ export const Register = () => {
                                 {errors.userAge}
                             </div>}
                         </div>
-                        <div>
-                            <label
-                                className='text-body block text-lx font-bold'
-                                htmlFor='userCity'
-                            >
-                                Ciudad:
-                            </label>
-
-                            <select
-                                className='w-full mt-3 p-3 border rounded-xl text-center block text-lx font-bold'
-                                name="userCity"
-                                id="userCity"
-                                value={formState.userCity}
-                                onChange={onInputChange}
-
-
-                            >
-                                <option
-                                    className='w-full mt-3 p-3 border rounded-xl'
-
-                                >
-                                    Elige tu ciudad
-                                </option>
-                                <option
-                                    className='w-full mt-3 p-3 border rounded-xl'
-
-                                >
-                                    Bogota D.C.
-                                </option>
-                                <option
-                                    className='w-full mt-3 p-3 border rounded-xl'
-
-                                >
-                                    Guacheta, Cundinamarca
-                                </option>
-                                <option
-                                    className='w-full mt-3 p-3 border rounded-xl'
-
-                                >
-                                    Ubaté, Cundinamarca
-                                </option>
-                                <option
-                                    className='w-full mt-3 p-3 border rounded-xl'
-
-                                >
-                                    Soacha, Cundinamarca
-                                </option>
-                                <option
-                                    className='w-full mt-3 p-3 border rounded-xl'
-
-                                >
-                                    Otra:
-
-                                </option>
-
-
-
-
-                            </select>
-                            {errors.userCity && <div className='bg-red-400 text-primary alert alert-danger p-1'>
-                                {errors.userCity}
-                            </div>}
-
-
-                            <input
-                                className='w-full mt-3 p-3 border rounded-xl bg-body'
-                                type="text"
-                                name='otherCity'
-                                placeholder='Digita tu ciudad'
-                                value={formState.otherCity}
-                                onChange={onInputChange}
-                            />
-
-
-                        </div>
-
-                        <div>
-                            <label
-                                className='text-body block text-lx font-bold'
-                                htmlFor='chooseCourse'
-                            >
-                                Elige:
-                            </label>
-
-                            <select
-                                className='w-full mt-3 p-3 border rounded-xl text-center block text-lx font-bold'
-                                name="chooseCourse"
-                                id="chooseCourse"
-                                value={formState.chooseCourse}
-                                onChange={onInputChange}
-
-
-                            >
-                                <option
-                                    className='w-full mt-3 p-3 border rounded-xl'
-
-                                >
-                                    Elige un curso de interes
-                                </option>
-                                <option
-                                    className='w-full mt-3 p-3 border rounded-xl'
-
-                                >
-                                    Matematicas
-                                </option>
-                                <option
-                                    className='w-full mt-3 p-3 border rounded-xl'
-
-                                >
-                                    Estadistica
-                                </option>
-                                <option
-                                    className='w-full mt-3 p-3 border rounded-xl'
-
-                                >
-                                    Ingles
-                                </option>
-                                <option
-                                    className='w-full mt-3 p-3 border rounded-xl'
-
-                                >
-                                    Español y Literatura
-                                </option>
-                                <option
-                                    className='w-full mt-3 p-3 border rounded-xl'
-
-                                >
-                                    Sistemas y Computacion
-                                </option>
-                                <option
-                                    className='w-full mt-3 p-3 border rounded-xl'
-
-                                >
-                                    Programacion
-                                </option>
-
-
-
-                            </select>
-
-                            {errors.chooseCourse && <div className='bg-red-400 text-primary alert alert-danger p-1'>
-                                {errors.chooseCourse}
-                            </div>}
-
-                        </div>
-
-                        <div>
-                            <label
-                                className='text-body block text-lx font-bold'
-                                htmlFor='userChoose'
-                            >
-                                Anota aqui si estas interesado en mas cursos:
-                            </label>
-                            <input
-                                className='w-full mt-3 p-3 border rounded-xl bg-body'
-                                type="text"
-                                name='userChoose'
-                                placeholder=''
-                                value={formState.userChoose}
-                                onChange={onInputChange}
-
-                            />
-
-                        </div>
-
                         <div>
                             <label
                                 className='text-body block text-lx font-bold'
