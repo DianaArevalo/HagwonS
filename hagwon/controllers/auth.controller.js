@@ -1,11 +1,22 @@
 import Register from "../models/register.model.js"
 import bcryptjs from "bcryptjs"
+import { errorHandler } from "../utils/error.js"
 
-export const signup = async (req, res) => {
+export const signup = async (req, res, next) => {
     const { username, lastname, email, userage, password } = req.body
 
-    if (!username || !lastname || !email || !userage || !password || username === '' || lastname === '' || email === '' || userage === '' || password === '') {
-        return res.status(400).json({ message: 'All fields are required' })
+    if (!username ||
+        !lastname ||
+        !email ||
+        !userage ||
+        !password ||
+        username === '' ||
+        lastname === '' ||
+        email === '' ||
+        userage === '' ||
+        password === ''
+    ) {
+        next(errorHandler(400, 'All fields are required'))
     }
 
     const hashedPassword = bcryptjs.hashSync(password, 15)
@@ -24,7 +35,7 @@ export const signup = async (req, res) => {
         res.json('signup succesful')
 
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        next(error)
     }
 
 
