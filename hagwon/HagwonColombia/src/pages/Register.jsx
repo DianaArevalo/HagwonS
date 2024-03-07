@@ -263,21 +263,40 @@ export const Register = () => {
                         </label>
 
                         <div className='gap-x-10'>
-                            <input
+                            {/* <input
                                 type="submit"
                                 value="registrarse"
                                 name='enviar'
                                 className="my-5 bg-accent mb-5 w-full py-3 text-white font-bold rounded hover:cursor-pointer hover:bg-purple-600 transition-colors"
-                            />
-                            {loading ? (
-                                <>
-                                    <span className='pl-3'>Enviando...</span>
-                                </>
-                            ) : (
-                                'Registrarse'
-                            )}
+                            /> */}
+
+                            <button
+                                className='my-5 bg-accent mb-5 w-full py-3 text-white font-bold rounded hover:cursor-pointer hover:bg-purple-600 transition-colors'
+                                disabled={loading}
+                                type='submit'
+
+                            >
+                                {loading ? (
+                                    <>
+                                        <span className='pl-3'>Enviando...</span>
+                                    </>
+                                ) : (
+                                    'Enviar'
+                                )}
+                            </button>
+
 
                         </div>
+
+                        {
+                            Object.keys(errors).length > 0 && (
+                                <div className='bg-red-400 text-primary alert alert-danger p-5'>
+                                    {Object.values(errors).map((error, index) => (
+                                        <p key={index}>{error}</p>
+                                    ))}
+                                </div>
+                            )
+                        }
 
 
 

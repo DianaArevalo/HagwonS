@@ -5,7 +5,7 @@ export const useFormLogin = (loginForm, onValidate) => {
     const [formState, setFormState] = useState(loginForm)
     const [errors, setErrors] = useState({})
     const [loading, setLoading] = useState(false)
-    const [response, setResponse] = useState(null)
+
 
     const onInputChange = (e) => {
         const { name, value } = e.target;

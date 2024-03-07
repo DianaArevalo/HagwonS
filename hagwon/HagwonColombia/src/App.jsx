@@ -10,6 +10,7 @@ import {
 //pages
 
 import { Login } from "./pages/Login"
+import Signin from "./pages/Signin"
 import { Register } from "./pages/Register"
 import { ListCourses } from "./pages/ListCourses"
 import { Terms } from "./pages/terms"
@@ -44,6 +45,7 @@ function App() {
                 <Route index element={<Home />} />
                 <Route path="/cursos/:id" element={<ListCourses />} />
                 <Route path="/login/:id" element={<Login />} />
+                <Route path="/sign-in/:id" element={<Signin />} />
                 <Route path="/registro/:id" element={<Register />} />
                 <Route path="/loginProf/:id" element={<formTalent />} />
                 <Route path="/terms/:id" element={<Terms />} />
