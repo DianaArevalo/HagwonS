@@ -7,10 +7,10 @@ export const Register = () => {
 
     const registerForm = {
         //Aqui va la captura de la iinformacion en objeto cogiendo desde (name)
-        userNames: '',
-        lastName: '',
-        userName: '',
-        userAge: '',
+        username: '',
+        lastname: '',
+        email: '',
+        userage: '',
         password: '',
         equalPassword: '',
     }
@@ -23,33 +23,33 @@ export const Register = () => {
         let regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/;
 
 
-        if (!formState.userNames.trim()) {
+        if (!formState.username.trim()) {
 
-            errors.userNames = 'El campo "Nombres" es obligatorio '
+            errors.username = 'El campo "Nombres" es obligatorio '
             isError = true
-        } else if (!regexName.test(formState.userNames)) {
-            errors.userNames = 'El campo "Nombres" solo acepta letras y espacios'
+        } else if (!regexName.test(formState.username)) {
+            errors.username = 'El campo "Nombres" solo acepta letras y espacios'
             isError = true
         }
 
-        if (!formState.lastName.trim()) {
-            errors.lastName = 'El campo "Apellidos" es obligatorio'
+        if (!formState.lastname.trim()) {
+            errors.lastname = 'El campo "Apellidos" es obligatorio'
             isError = true
-        } else if (!regexName.test(formState.lastName)) {
-            errors.lastName = 'El campo "Apellidos" solo acepta letras y espacios'
-            isError = true
-        }
-
-        if (!formState.userName.trim()) {
-            errors.userName = "Por favor introduce un email"
-            isError = true
-        } else if (!emailRegex.test(formState.userName)) {
-            errors.userName = 'El campo "Email" contiene un formato no valido'
+        } else if (!regexName.test(formState.lastname)) {
+            errors.lastname = 'El campo "Apellidos" solo acepta letras y espacios'
             isError = true
         }
 
-        if (!formState.userAge.trim()) {
-            errors.userAge = 'El campo "Edad" es obligatorio'
+        if (!formState.email.trim()) {
+            errors.email = "Por favor introduce un email"
+            isError = true
+        } else if (!emailRegex.test(formState.email)) {
+            errors.email = 'El campo "Email" contiene un formato no valido'
+            isError = true
+        }
+
+        if (!formState.userage.trim()) {
+            errors.userage = 'El campo "Edad" es obligatorio'
             isError = true
         }
 
@@ -105,7 +105,7 @@ export const Register = () => {
 
                         <div>
                             <label
-                                htmlFor='userNames'
+                                htmlFor='username'
                                 className='text-body block text-lx font-bold'
                             >
                                 Nombres:
@@ -113,14 +113,15 @@ export const Register = () => {
                             <input
                                 className='w-full mt-3 p-3 border rounded-xl bg-body'
                                 type="text"
-                                name='userNames'
+                                name='username'
                                 placeholder='Angela Maria'
-                                value={formState.userNames}
+                                id='username'
+                                value={formState.username}
                                 onChange={onInputChange}
 
                             />
-                            {errors.userNames && <div className='bg-red-400 text-primary alert alert-danger p-1'>
-                                {errors.userNames}
+                            {errors.username && <div className='bg-red-400 text-primary alert alert-danger p-1'>
+                                {errors.username}
                             </div>}
 
                         </div>
@@ -130,22 +131,23 @@ export const Register = () => {
                         <div>
                             <label
                                 className='text-body block text-lx font-bold'
-                                htmlFor='lastName'
+                                htmlFor='lastname'
                             >
                                 Apellidos:
                             </label>
                             <input
                                 className='w-full mt-3 p-3 border rounded-xl bg-body'
                                 type="text"
-                                name='lastName'
+                                name='lastname'
                                 placeholder='Perez '
-                                value={formState.lastName}
+                                id='lastname'
+                                value={formState.lastname}
                                 onChange={onInputChange}
 
                             />
 
-                            {errors.lastName && <div className='bg-red-400 text-primary alert alert-danger p-1'>
-                                {errors.lastName}
+                            {errors.lastname && <div className='bg-red-400 text-primary alert alert-danger p-1'>
+                                {errors.lastname}
                             </div>}
 
                         </div>
@@ -153,41 +155,43 @@ export const Register = () => {
                         <div>
                             <label
                                 className='text-body block text-lx font-bold'
-                                htmlFor='userName'
+                                htmlFor='email'
                             >
-                                e-mail:
+                                email:
                             </label>
                             <input
                                 className='w-full mt-3 p-3 border rounded-xl bg-body'
                                 type="email"
-                                name='userName'
+                                name='email'
                                 placeholder='hagwonSchoolOficial@gmail.com'
-                                value={formState.userName}
+                                id='email'
+                                value={formState.email}
                                 onChange={onInputChange}
 
                             />
-                            {errors.userName && <div className='bg-red-400 text-primary alert alert-danger p-1'>
-                                {errors.userName}
+                            {errors.email && <div className='bg-red-400 text-primary alert alert-danger p-1'>
+                                {errors.email}
                             </div>}
                         </div>
                         <div>
                             <label
                                 className='text-body block text-lx font-bold'
-                                htmlFor='userAge'
+                                htmlFor='userage'
                             >
                                 Edad:
                             </label>
                             <input
                                 className='w-full mt-3 p-3 border rounded-xl bg-body'
                                 type="number"
-                                name='userAge'
+                                name='userage'
                                 placeholder='13'
-                                value={formState.userAge}
+                                id='userage'
+                                value={formState.userage}
                                 onChange={onInputChange}
 
                             />
-                            {errors.userAge && <div className='bg-red-400 text-primary alert alert-danger p-1'>
-                                {errors.userAge}
+                            {errors.userage && <div className='bg-red-400 text-primary alert alert-danger p-1'>
+                                {errors.userage}
                             </div>}
                         </div>
                         <div>
@@ -202,6 +206,7 @@ export const Register = () => {
                                 type="password"
                                 name='password'
                                 placeholder=''
+                                id='password'
                                 value={formState.Spassword}
                                 onChange={onInputChange}
 
@@ -255,18 +260,26 @@ export const Register = () => {
                             </div>
 
 
-
-
-
                         </label>
 
-                        <input
+                        <div className='gap-x-10'>
+                            <input
+                                type="submit"
+                                value="registrarse"
+                                name='enviar'
+                                className="my-5 bg-accent mb-5 w-full py-3 text-white font-bold rounded hover:cursor-pointer hover:bg-purple-600 transition-colors"
+                            />
+                            {loading ? (
+                                <>
+                                    <span className='pl-3'>Enviando...</span>
+                                </>
+                            ) : (
+                                'Registrarse'
+                            )}
 
-                            type="submit"
-                            value="registrarse"
-                            className="my-5 bg-accent mb-5 w-full py-3 text-white font-bold rounded hover:cursor-pointer hover:bg-purple-600 transition-colors"
+                        </div>
 
-                        />
+
 
                         <Link
                             className="block text-center my-5 text-body text-sm"

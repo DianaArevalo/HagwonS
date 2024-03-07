@@ -16,7 +16,7 @@ export const useFormRegister = (registerForm, onValidate) => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const err = onValidate(formState)
@@ -25,6 +25,17 @@ export const useFormRegister = (registerForm, onValidate) => {
             console.log("formulario enviado...");
         } else {
             setErrors(err)
+        }
+
+        try {
+            const res = await fetch('/api/auth/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formState)
+            })
+            const data = await res.json()
+        } catch (error) {
+
         }
     }
 
