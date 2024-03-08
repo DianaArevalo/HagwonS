@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Logotipo from '../assets/logotipo.png'
+import Logotipo from '../../assets/logotipo.png'
 
 
 export const Math = () => {

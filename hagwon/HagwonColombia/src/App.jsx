@@ -13,7 +13,7 @@ import { Login } from "./pages/Login"
 import Signin from "./pages/Signin"
 import { Register } from "./pages/Register"
 import { ListCourses } from "./pages/ListCourses"
-import { Terms } from "./pages/terms"
+import { Terms } from "./components/Info/Terms"
 
 
 //components
@@ -25,16 +25,17 @@ import { Courses } from "./components/Courses"
 import { About } from "./components/About"
 import { Students } from "./components/Students"
 import { Contact } from "./components/Contact"
-import { History } from "./components/History"
+import { History } from "./components/Info/History"
+import Questions from "./components/Info/Questions"
 
-//cursos
+//cursoss
 
-import { Math } from "./components/Math"
-import { Statistics } from "./components/Statistics"
-import { English } from "./components/English"
-import { Spanish } from "./components/Spanish"
-import { Systems } from "./components/Systems"
-import { Programming } from "./components/Programming"
+import { Math } from "./components/cursos/Math"
+import { Statistics } from "./components/cursos/Statistics"
+import { English } from "./components/cursos/English"
+import { Spanish } from "./components/cursos/Spanish"
+import { Systems } from "./components/cursos/Systems"
+import { Programming } from "./components/cursos/Programming"
 
 
 
@@ -49,8 +50,8 @@ function App() {
                 <Route path="/registro/:id" element={<Register />} />
                 <Route path="/loginProf/:id" element={<formTalent />} />
                 <Route path="/terms/:id" element={<Terms />} />
-                <Route path="/history/:id" element={<Terms />} />
-
+                <Route path="/history/:id" element={<History />} />
+                <Route path="/questions/:id" element={<Questions />} />
 
                 {/* Rutas principales */}
                 <Route path="/professionals" element={<Professionals />} />

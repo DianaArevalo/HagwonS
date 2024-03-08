@@ -21,4 +21,10 @@
     .menu-item {
         @apply text-sm font-bold text-primary hover:text-accent relative cursor-pointer after:content-[''] after:w-full after:h-[5px] after:absolute after:left-0
     }
+
+    .footer {
+        @apply mx-auto sm:px-16 pb-6 px-8 flex flex-col gap-7;
+    }
+
+
 }

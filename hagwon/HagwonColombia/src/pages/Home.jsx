@@ -16,7 +16,7 @@ import { Students } from '../components/Students'
 import { Canvas } from '@react-three/fiber'
 import Edificio from '../models/Edificio'
 import { Suspense } from 'react'
-import Loader from '../components/Loader'
+import Loader from '../components/config/Loader'
 import HomeInfo from '../components/HomeInfo'
 
 
