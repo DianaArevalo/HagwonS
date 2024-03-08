@@ -121,14 +121,33 @@ l-135 -3 -3 -196 -2 -196 87 -6 c82 -5 89 -7 115 -36 36 -40 37 -89 4 -128
                     <li className='mb-5'>
                         <a href="/testimonios" className='menu-item'>Estudiantes</a>
                     </li>
+                    <li className='mb-5'>
+                        <a
+                            href="/registro/:id"
+                            className='menu-item uppercase'
+                        >
+                            Registrate</a>
+
+                    </li>
+
                 </ul>
 
+
                 <Link to="/contact" className='h-10 bg-accent text-white text-lg px-6 rounded hover:bg-wallpaper hover:text-primary items-center p-2 justify-center md:block '> Contactanos</Link>
+
+
             </div>
+
+
 
             <div onClick={() => {
                 setIsMenuOpen(false)
             }} className='w-screen h-screen bg-black/50 fixed top-0 -z-10' />
+
+
+
+
+
 
         </div>
     )

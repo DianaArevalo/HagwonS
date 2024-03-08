@@ -108,10 +108,10 @@ export const Register = () => {
                                 htmlFor='username'
                                 className='text-body block text-lx font-bold'
                             >
-                                Nombres:
+                                Nombres*
                             </label>
                             <input
-                                className='w-full mt-3 p-3 border rounded-xl bg-body'
+                                className='w-full mt-3 p-3 border rounded-xl bg-body mb-5'
                                 type="text"
                                 name='username'
                                 placeholder='Angela Maria'
@@ -120,7 +120,7 @@ export const Register = () => {
                                 onChange={onInputChange}
 
                             />
-                            {errors.username && <div className='bg-red-400 text-primary alert alert-danger p-1'>
+                            {errors.username && <div className='bg-red-400 text-primary alert alert-danger p-1 rounded-lg'>
                                 {errors.username}
                             </div>}
 
@@ -133,10 +133,10 @@ export const Register = () => {
                                 className='text-body block text-lx font-bold'
                                 htmlFor='lastname'
                             >
-                                Apellidos:
+                                Apellidos*
                             </label>
                             <input
-                                className='w-full mt-3 p-3 border rounded-xl bg-body'
+                                className='w-full mt-3 p-3 border rounded-xl bg-body mb-5'
                                 type="text"
                                 name='lastname'
                                 placeholder='Perez '
@@ -146,7 +146,7 @@ export const Register = () => {
 
                             />
 
-                            {errors.lastname && <div className='bg-red-400 text-primary alert alert-danger p-1'>
+                            {errors.lastname && <div className='bg-red-400 text-primary alert alert-danger p-1 rounded-lg'>
                                 {errors.lastname}
                             </div>}
 
@@ -157,10 +157,10 @@ export const Register = () => {
                                 className='text-body block text-lx font-bold'
                                 htmlFor='email'
                             >
-                                email:
+                                email*
                             </label>
                             <input
-                                className='w-full mt-3 p-3 border rounded-xl bg-body'
+                                className='w-full mt-3 p-3 border rounded-xl bg-body mb-5'
                                 type="email"
                                 name='email'
                                 placeholder='hagwonSchoolOficial@gmail.com'
@@ -169,7 +169,7 @@ export const Register = () => {
                                 onChange={onInputChange}
 
                             />
-                            {errors.email && <div className='bg-red-400 text-primary alert alert-danger p-1'>
+                            {errors.email && <div className='bg-red-400 text-primary alert alert-danger p-1 rounded-lg'>
                                 {errors.email}
                             </div>}
                         </div>
@@ -178,10 +178,10 @@ export const Register = () => {
                                 className='text-body block text-lx font-bold'
                                 htmlFor='userage'
                             >
-                                Edad:
+                                Edad*
                             </label>
                             <input
-                                className='w-full mt-3 p-3 border rounded-xl bg-body'
+                                className='w-full mt-3 p-3 border rounded-xl bg-body mb-5'
                                 type="number"
                                 name='userage'
                                 placeholder='13'
@@ -190,7 +190,7 @@ export const Register = () => {
                                 onChange={onInputChange}
 
                             />
-                            {errors.userage && <div className='bg-red-400 text-primary alert alert-danger p-1'>
+                            {errors.userage && <div className='bg-red-400 text-primary alert alert-danger p-1 rounded-lg'>
                                 {errors.userage}
                             </div>}
                         </div>
@@ -199,19 +199,23 @@ export const Register = () => {
                                 className='text-body block text-lx font-bold'
                                 htmlFor='password'
                             >
-                                Contraseña
+                                Contraseña*
+                                <br />
+                                <span className='text-sm'>
+                                    la contraseña debe tener al menos: 8 caracteres, una letra mayuscula, una letra minuscula, un digito, sin espacios y caracteres especiales
+                                </span>
                             </label>
                             <input
-                                className='w-full mt-3 p-3 border rounded-xl bg-body'
+                                className='w-full mt-3 p-3 border rounded-xl bg-body mb-5 '
                                 type="password"
                                 name='password'
                                 placeholder=''
                                 id='password'
-                                value={formState.Spassword}
+                                value={formState.password}
                                 onChange={onInputChange}
 
                             />
-                            {errors.password && <div className='bg-red-400 text-primary alert alert-danger p-1'>
+                            {errors.password && <div className='bg-red-400 text-primary alert alert-danger p-1 rounded-lg'>
                                 {errors.password}
                             </div>}
                         </div>
@@ -220,10 +224,10 @@ export const Register = () => {
                                 className='text-body block text-lx font-bold'
                                 htmlFor='equalPassword'
                             >
-                                Confirme su Contraseña
+                                Confirme su Contraseña*
                             </label>
                             <input
-                                className='w-full mt-3 p-3 border rounded-xl bg-body'
+                                className='w-full mt-3 p-3 border rounded-xl bg-body mb-5'
                                 type="password"
                                 name='equalPassword'
                                 placeholder=''
@@ -232,7 +236,7 @@ export const Register = () => {
 
 
                             />
-                            {errors.equalPassword && <div className='bg-red-400 text-primary alert alert-danger p-1'>
+                            {errors.equalPassword && <div className='bg-red-400 text-primary alert alert-danger p-1  rounded-lg'>
                                 {errors.equalPassword}
                             </div>}
                         </div>
@@ -249,7 +253,10 @@ export const Register = () => {
 
                             </div>
                             <div>
-                                <p>Acepto terminos y condiciones</p>
+                                <p
+                                    className='text-body block text-lx font-bold' >
+                                    Acepto terminos y condiciones*
+                                </p>
 
                                 <input
                                     type="checkbox"
@@ -290,7 +297,7 @@ export const Register = () => {
 
                         {
                             Object.keys(errors).length > 0 && (
-                                <div className='bg-red-400 text-primary alert alert-danger p-5'>
+                                <div className='bg-red-400 text-primary alert alert-danger p-5 rounded-lg'>
                                     {Object.values(errors).map((error, index) => (
                                         <p key={index}>{error}</p>
                                     ))}
@@ -301,7 +308,7 @@ export const Register = () => {
 
 
                         <Link
-                            className="block text-center my-5 text-body text-sm"
+                            className="block text-center my-5 text-body text-lg font-bold rounded-lg"
                             to='/login/:id'
                         >
                             ¿Ya tienes una cuenta?

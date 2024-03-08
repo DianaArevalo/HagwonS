@@ -145,6 +145,10 @@ l-135 -3 -3 -196 -2 -196 87 -6 c82 -5 89 -7 115 -36 36 -40 37 -89 4 -128
                             <a href="/contact" className='hidden h-10 bg-accent text-white text-lg px-6 rounded hover:bg-wallpaper hover:text-bold items-center p-2 hover:text-primary md:block'>Contactanos</a>
                         </button>
 
+                        <button>
+                            <a href="/registro/:id" className='hidden h-10 bg-accent text-white text-lg px-6 rounded hover:bg-wallpaper hover:text-bold items-center p-2 hover:text-primary md:block'>Registrate</a>
+                        </button>
+
 
                         <button onClick={() => { setIsMenuOpen(true) }}
                             className='w-11 h-11 bg-accent text-2xl text-white rounded flex justify-center items-center md:hidden z-50'>
