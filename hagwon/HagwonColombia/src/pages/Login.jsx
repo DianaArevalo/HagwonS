@@ -6,7 +6,7 @@ import { useFormLogin } from '../hooks/useFormlogin'
 export const Login = () => {
 
     const loginForm = {
-        userName: '',
+        email: '',
         password: ''
     }
 
@@ -16,11 +16,11 @@ export const Login = () => {
         let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         let regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/;
 
-        if (!formState.userName.trim()) {
-            errors.userName = "el campo usuario no debe ser vacio"
+        if (!formState.email.trim()) {
+            errors.email = "el campo usuario no debe ser vacio"
             isError = true
-        } else if (!emailRegex.test(formState.userName)) {
-            errors.userName = 'El campo "Email" contiene un formato no valido'
+        } else if (!emailRegex.test(formState.email)) {
+            errors.email = 'El campo "Email" contiene un formato no valido'
             isError = true
         }
 
@@ -68,20 +68,20 @@ export const Login = () => {
                         <div>
                             <label
                                 className='text-body block text-lx font-bold uppercase'
-                                htmlFor='userName'
+                                htmlFor='email'
                             >
-                                Usuario o email:
+                                email*
                             </label>
                             <input
                                 className='w-full mt-3 p-3 border rounded-xl bg-body'
                                 type="email"
-                                name='userName'
+                                name='email'
                                 placeholder='Ingrese un email'
-                                value={formState.userName}
+                                value={formState.email}
                                 onChange={onInputChange}
                             />
-                            {errors.userName && <div className='bg-red-400 text-primary alert alert-danger p-1'>
-                                {errors.userName}
+                            {errors.email && <div className='bg-red-400 text-primary alert alert-danger p-1'>
+                                {errors.email}
                             </div>}
                         </div>
 
@@ -91,7 +91,7 @@ export const Login = () => {
                                 className='uppercase text-body block text-lx font-bold'
                                 htmlFor='password'
                             >
-                                Contraseña
+                                Contraseña*
                             </label>
                             <input
                                 className='w-full mt-3 p-3 border rounded-xl bg-body'
@@ -106,13 +106,38 @@ export const Login = () => {
                             </div>}
                         </div>
 
-                        <input
+                        {/* <input
 
                             type="submit"
                             value="Ingresar"
                             className="my-5 bg-accent mb-5 w-full py-3 text-white font-bold rounded hover:cursor-pointer hover:bg-purple-600 transition-colors"
 
-                        />
+                        /> */}
+
+                        <button
+                            className='my-5 bg-accent mb-5 w-full py-3 text-white font-bold rounded hover:cursor-pointer hover:bg-purple-600 transition-colors'
+                            disabled={loading}
+                            type='submit'
+
+                        >
+                            {loading ? (
+                                <>
+                                    <span className='pl-3'>Ingresando...</span>
+                                </>
+                            ) : (
+                                'Ingresar'
+                            )}
+                        </button>
+
+                        {
+                            Object.keys(errors).length > 0 && (
+                                <div className='bg-red-400 text-primary alert alert-danger p-5 rounded-lg'>
+                                    {Object.values(errors).map((error, index) => (
+                                        <p key={index}>{error}</p>
+                                    ))}
+                                </div>
+                            )
+                        }
 
                         <Link
                             className="block text-center my-5 text-body text-sm"
