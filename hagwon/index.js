@@ -1,11 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from 'dotenv'
+import cookieParser from 'cookie-parser'
+
 import registerRoutes from './routes/register.route.js'
 import authRoutes from './routes/auth.route.js'
 import messageRoutes from './routes/message.route.js'
 
-import cookieParser from 'cookie-parser'
+
 import cors from 'cors'
 
 dotenv.config()
@@ -21,7 +23,6 @@ mongoose.connect(process.env.MONGO).then(
 const app = express()
 
 app.use(express.json())
-
 // Usa cookie-parser como middleware
 app.use(cookieParser());
 
