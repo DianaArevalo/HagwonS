@@ -270,12 +270,7 @@ export const Register = () => {
                         </label>
 
                         <div className='gap-x-10'>
-                            {/* <input
-                                type="submit"
-                                value="registrarse"
-                                name='enviar'
-                                className="my-5 bg-accent mb-5 w-full py-3 text-white font-bold rounded hover:cursor-pointer hover:bg-purple-600 transition-colors"
-                            /> */}
+
 
                             <button
                                 className='my-5 bg-accent mb-5 w-full py-3 text-white font-bold rounded hover:cursor-pointer hover:bg-purple-600 transition-colors'

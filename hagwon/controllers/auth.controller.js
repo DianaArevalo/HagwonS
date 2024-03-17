@@ -2,7 +2,11 @@ import Register from "../models/register.model.js"
 import bcryptjs from "bcryptjs"
 import { errorHandler } from "../utils/error.js"
 //4 json web token
-import jwt from 'jsonwebtoken'
+// import jwt from 'jsonwebtoken'
+// import { verifyToken } from "../utils/verifyUser.js"
+import generateTokenAndSetCookie from "../utils/generateToken.js"
+
+
 
 export const signup = async (req, res, next) => {
     const { username, lastname, email, userage, password } = req.body
@@ -23,12 +27,18 @@ export const signup = async (req, res, next) => {
 
     const hashedPassword = bcryptjs.hashSync(password, 15)
 
+    // https://avatar-placeholder.iran.liara.run/
+
+    const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=`;
+
+
     const newRegister = new Register({
         username,
         lastname,
         email,
         userage,
         password: hashedPassword,
+        profilePic: boyProfilePic,
     });
 
     try {
@@ -61,20 +71,33 @@ export const signin = async (req, res, next) => {
             return next(errorHandler(400, 'Invalid password'))
         }
 
-        const token = jwt.sign(
-            //encrypted value 5 y 6
-            { id: validUser._id },
-            process.env.JWT_SECRET)
+        //generate token
 
-        //7
+        generateTokenAndSetCookie(validUser._id, res);
 
-        const { password: pass, ...rest } = validUser._doc
-
-        res.status(200).cookie('access_token', token, {
-            httpOnly: true
-        }).json(rest)
+        res.status(200).json({
+            _id: validUser._id,
+            username: validUser.username,
+            lastname: validUser.lastname,
+            emai: validUser.email,
+            profilePic: validUser.profilePic,
+        })
 
     } catch (error) {
+        console.log("Error in login controller", error.message);
+        next(error)
+    }
+}
+
+
+export const logout = (req, res, next) => {
+
+    try {
+        res.cookie("jwt", "", { maxAge: 0 })
+        res.status(200).json({ message: "logged out successfully" })
+
+    } catch (error) {
+        console.log("Error in logout controller", error.message);
         next(error)
     }
 }

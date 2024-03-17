@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { CartContext } from '../context/cartContext'
+
 
 export const useFormLogin = (loginForm, onValidate) => {
 
@@ -7,6 +9,7 @@ export const useFormLogin = (loginForm, onValidate) => {
     const [errors, setErrors] = useState({})
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
+    const { setUser } = useContext(CartContext);
 
 
     const onInputChange = (e) => {
@@ -48,6 +51,8 @@ export const useFormLogin = (loginForm, onValidate) => {
 
             //navigate
             if (res.ok) {
+                // Establecer el usuario en el contexto
+
                 navigate('/sign-in/:id')
             }
         } catch (error) {
@@ -63,6 +68,7 @@ export const useFormLogin = (loginForm, onValidate) => {
         onInputChange,
         loading,
         handleSubmit,
-        errors
+        errors,
+
     }
 }
