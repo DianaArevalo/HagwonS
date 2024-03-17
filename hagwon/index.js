@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 import dotenv from 'dotenv'
 import registerRoutes from './routes/register.route.js'
 import authRoutes from './routes/auth.route.js'
+import messageRoutes from './routes/message.route.js'
+
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 
@@ -37,6 +39,7 @@ app.listen(3000, () => {
 
 app.use('/api/register', registerRoutes)
 app.use('/api/auth', authRoutes)
+app.use('/api/messages', messageRoutes)
 
 //22
 app.use((err, req, res, next) => {
