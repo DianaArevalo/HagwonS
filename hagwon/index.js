@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 import registerRoutes from './routes/register.route.js'
 import authRoutes from './routes/auth.route.js'
 import messageRoutes from './routes/message.route.js'
+import userRoutes from './routes/user.route.js'
 
 
 import cors from 'cors'
@@ -41,6 +42,7 @@ app.listen(3000, () => {
 app.use('/api/register', registerRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/messages', messageRoutes)
+app.use('/api/users', userRoutes )
 
 //22
 app.use((err, req, res, next) => {
