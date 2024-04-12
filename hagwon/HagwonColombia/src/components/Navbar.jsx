@@ -122,7 +122,7 @@ l-135 -3 -3 -196 -2 -196 87 -6 c82 -5 89 -7 115 -36 36 -40 37 -89 4 -128
 
                         </Link>
 
-                        <ul className='hidden md:flex md:gap-14'>
+                        <ul className='hidden md:flex md:gap-10'>
                             <li>
                                 <a href="/" className='menu-item'>Inicio</a>
                             </li>
@@ -141,13 +141,20 @@ l-135 -3 -3 -196 -2 -196 87 -6 c82 -5 89 -7 115 -36 36 -40 37 -89 4 -128
 
                         </ul>
 
-                        <button >
-                            <a href="/contact" className='hidden h-10 bg-accent text-white text-lg px-6 rounded hover:bg-wallpaper hover:text-bold items-center p-2 hover:text-primary md:block'>Contactanos</a>
-                        </button>
+                        <div className='flex-row lg:flex justify-end items-end gap-10'>
+                            <button >
+                                <a href="/contact" className='hidden h-7 lg:h-10 bg-accent text-white text-lg px-6 rounded hover:bg-wallpaper hover:text-bold items-center justify-center lg:p-2 hover:text-primary md:block'>Contactanos</a>
+                            </button>
 
-                        <button>
-                            <a href="/registro/:id" className='hidden h-10 bg-accent text-white text-lg px-6 rounded hover:bg-wallpaper hover:text-bold items-center p-2 hover:text-primary md:block'>Registrate</a>
-                        </button>
+                            <button>
+                                <a href="/registro/:id" className=' hidden h-7 lg:h-10 bg-accent text-white text-lg px-6 rounded hover:bg-wallpaper hover:text-bold items-center lg:p-2 hover:text-primary md:block'>Registrate</a>
+                            </button>
+
+
+
+                        </div>
+
+
 
 
                         <button onClick={() => { setIsMenuOpen(true) }}

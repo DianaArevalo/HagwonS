@@ -1,44 +1,54 @@
 
-import { Link } from 'react-router-dom'
-import ParticlesBackground from '../components/config/ParticlesBackground'
-
-
+import { Link } from "react-router-dom"
+import { PROFES } from "../exports/data"
 
 export const Professionals = () => {
+
+
     return (
 
         <section
-            className='bg-primary section mx-auto flex flex-wrap p-4 justify-between md:grid grid-cols-2 h-[100vh]  '
+            className='bg-wallpaper container mx-auto mt-5 md:mt-20 p-5 md:flex md:justify-center flex-col'
             id='/professionals'
-
-
         >
-            < ParticlesBackground />
+            <div className="w-full justify-center items-center">
+                <div className="mt-10 md:flex m-10 gap-3 justify-between items-center ">
 
-            <div className='justify-between flex flex-col items-center'>
-                <div className='justify-center place-content-center bg-wallpaper2 w-100 h-100 p-4 rounded-2xl mt-[60px] shadow-2xl ring ring-primary ring-offset-0 shadow-primary'>
-                    <h3 className='font-sans leading-normal'>Sabemos que la educacion en Colombia ha sido un reto, ya que existen grandes brechas de inequidad, por lo cual nuestra fundacion se basa en el perfeccionamiento de nuestras clases:  </h3>
-                    <ol>
-                        <li className='font-sans font-bold leading-normal'>Ser los mejores amigos de nuestros estudiantes es lo mas importante</li>
-                        <li className='font-sans font-bold leading-normal'>Disfrutar mientras el estudiante aprende </li>
-                        <li className='font-sans font-bold leading-normal'>Buscamos el desarrollo y avance de nuestros estudiantes</li>
-                        <li className='font-sans font-bold leading-normal'>Crear un ambiente propicio y agradable en nuestras sesiones</li>
-                    </ol>
-                </div>
-                <div className='w-full max-w-3xl mx-auto flex flex-col md:flex-row items-center'>
-                    <div className='items-center justify-between p-10'>
-                        <Link className='justify-center bg-accent rounded-2xl w-[100px] h-[100px] p-4 text-white ring ring-white ring-offset-0 '
-                            to='/cursos/:id'
-                        >Ver mas</Link>
-                    </div>
-                    <div className='justify-between items-center'>
-                        <Link className='justify-center bg-accent rounded-2xl w-[100px] h-[100px] p-4 text-white ring ring-white ring-offset-0 '
-                            to=''
-                        >Trabaja con Nosotros</Link>
-                    </div>
-                </div>
+                    {PROFES.map((d) => (
+                        <div className="bg-wallpaper2 rounded-2xl shadow-2xl ring ring-wallpaper2 ring-offset-0 shadow-primary mb-10 lg:w-[250px]">
+                            <div className="rounded-t-xl bg-gradient-to-r from-accent to-wallpaper  flex justify-center items-center">
+                                <img src={d.imageUrl} alt="" className="h-44 w-44 rounded-full ring-primary ring-offset-0 shadow-primary p-2 " />
+                            </div>
 
+                            <div className="flex flex-col justify-center items-center gap-4 p-4">
+                                <p className="text-xl font-semibold">{d.name}</p>
+                                <p>{d.type}</p>
+                                <button className="btn">Leer mas...</button>
+
+                            </div>
+
+                        </div>
+                    ))}
+
+
+
+
+                </div>
             </div>
+
+            <div className=' mx-auto flex flex-col md:flex-row items-center'>
+                <div className='items-center justify-between p-10'>
+                    <Link className='btn '
+                        to='/cursos/:id'
+                    >Ver mas</Link>
+                </div>
+                <div className='justify-between items-center'>
+                    <Link className='btn '
+                        to=''
+                    >Trabaja con Nosotros</Link>
+                </div>
+            </div>
+
 
         </section>
 

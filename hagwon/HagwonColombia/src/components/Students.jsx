@@ -1,12 +1,22 @@
 import React from 'react'
+import fondo from '../assets/students/conferencias.jpg'
 
 export const Students = () => {
     return (
         <div
-            className='section bg-wallpaper'
-            id='/testimonios'
+            style={{
+                backgroundImage: `url(${fondo})`,
+                opacity: 0.7
+            }}
+            className='section flex-col bg-cover'
+            id='/courses'
         >
-            Testimonios
+
+            <div>
+                Carousel
+
+            </div>
+
         </div>
     )
 }

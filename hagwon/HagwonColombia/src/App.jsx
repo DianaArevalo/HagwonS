@@ -76,7 +76,7 @@ function App() {
     )
 
     return (
-        <div className="App h-screen bg-wallpaper sm:text-xl md:text-xl  ">
+        <div className="App ">
             <RouterProvider router={router} />
         </div>
     )

@@ -1,100 +1,74 @@
+import { Link } from "react-router-dom"
+import { useState } from "react"
+//GSAP
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
-//useStates
-import { useState } from 'react'
-//logo
-import Logo from '../assets/logoHagwon.png'
-//link
-import { Link } from 'react-router-dom'
+//Spline
+import SplineS from "../components/spline/SplineS.jsx"
+
 //componentes
+
 import { About } from "../components/About"
 import { Contact } from '../components/Contact'
 import { Courses } from '../components/Courses'
-import { Navbar } from '../components/Navbar'
+
 import { Professionals } from '../components/Professionals'
 import { Students } from '../components/Students'
-//imagen en 3D
-import { Canvas } from '@react-three/fiber'
-import Edificio from '../models/Edificio'
-import { Suspense } from 'react'
-import Loader from '../components/config/Loader'
-import HomeInfo from '../components/HomeInfo'
-
+import { heroVideo, smallHeroVideo } from "../exports/data.js"
 
 
 
 export const Home = () => {
 
-    const [currentStage, setCurrentStage] = useState(1)
-    const [isRotating, setIsRotating] = useState(false)
+    const [videoSrc, setVideoSrc] = useState(window.innerWidth < 760 ? smallHeroVideo : heroVideo)
 
-    const adjustBuildScreenSize = () => {
-        let screenScale = null;
-        let screenPosition = [3, -20, -70]
-        let rotation = [0.1, 4.7, 0]
-
-        if (window.innerWidth < 768) {
-            screenScale = [0.9, 0.9, 0.9]
-        } else {
-            screenScale = [0.030, 0.030, 0.030]
-        }
-        return [screenScale, screenPosition, rotation]
-    }
-
-    const [edificioScale, edificioPosition, edificioRotation] = adjustBuildScreenSize()
-
-
+    useGSAP(() => {
+        gsap.to('#hero', { opacity: 1, delay: 1.5 })
+    })
 
     return (
         <>
-            <section className='bg-wallpaper text-primary w-full h-[100vh]'>
-                <div className='mx-auto max-w-7xl p-4 justify-between md:grid grid-cols-2'>
-                    <div className='flex flex-col grid-cols-2'>
-                        <div className=' flex items-center grid-span-2'>
-                            <img
-                                src={Logo}
-                                alt=""
+            <section className='bg-primary flex flex-col items-center justify-center'>
+                <div className="lg:flex flex-col-2 mt-10">
+                    <div className="p-10 justify-between items-center flex-row relative">
 
-                            />
+                        <div className="flex items-center justify-center h-5/6 w-full flex-col mb-6 ">
+                            <div className="md:w-[100%] w-[50%]">
+                                <video className="pointer-events-none" autoPlay muted playsInline={true} key={videoSrc}  >
+                                    <source src={videoSrc} type="video/mp4" />
+                                </video>
+                            </div>
+                            <p id="hero" className="text-center font-semibold text-3xl text-wallpaper2 opacity-0 max-md:mb-10 font-primary">Educacion Hibrida</p>
+                            <div className="flex items-center justify-center  flex-col">
+                                <Link className="btn " to="/login/:id">¿Ya tienes tu cuenta?</Link>
 
-                        </div>
-
-                        <div className=' flex flex-col items-center '>
-
-                            {currentStage && <HomeInfo currentStage={currentStage} />}
+                            </div>
                         </div>
 
 
                     </div>
+                    <div className="justify-end lg:place-content-center md:w-[100%] w-[50%] h-[50%]  ">
+                        {/* <SplineS /> */}
+                    </div>
 
-                    <Canvas
-                        className={`justify-center ${isRotating ?
-                            'cussor-grabbing' : 'cursor-grab'}`}
-                        camera={{ near: 0.1, far: 1000 }}
-                    >
-                        <Suspense fallback={<Loader />}>
-                            <directionalLight position={[1, 1, 1]} intensity={2} />
-                            <ambientLight intensity={0.5} />
-                            <hemisphereLight skyColor='#b1e1ff' groundColor='#000000' />
-
-                            <Edificio
-                                position={edificioPosition}
-                                scale={edificioScale}
-                                rotation={edificioRotation}
-                                isRotating={isRotating}
-                                setIsRotating={setIsRotating}
-                                setCurrentStage={setCurrentStage}
-
-
-                            />
-
-                        </Suspense>
-
-                    </Canvas>
 
                 </div>
-            </section>
 
-            <section>
+                <div className='justify-center flex flex-col items-center'>
+                    <div className='box md:w-1/2'>
+                        <h3 className='font-sans leading-normal'> <span className='font-bold'>'Hagwon'</span>  significa escuela privada en donde los estudiantes refuerzan sus conocimientos y habilidades, termino proveniente de Corea del Sur donde los alumnos toman clases
+                            extra para mejorar sus promedios e ir a la educacion superior</h3>
+
+                    </div>
+
+
+                </div>
+
+
+            </section >
+
+            <section className="mb-10">
                 <Professionals />
                 <Courses />
                 <About />

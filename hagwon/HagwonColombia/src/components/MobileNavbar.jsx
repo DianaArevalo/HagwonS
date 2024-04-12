@@ -105,7 +105,7 @@ l-135 -3 -3 -196 -2 -196 87 -6 c82 -5 89 -7 115 -36 36 -40 37 -89 4 -128
 
                 </Link>
 
-                <ul>
+                <ul className='gap-5'>
                     <li className='mb-5'>
                         <a href="/" className='menu-item'>Inicio</a>
                     </li>
